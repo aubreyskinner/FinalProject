@@ -1,0 +1,34 @@
+@page 
+@model Final.Pages.DeleteWorkoutModel
+
+@{
+    ViewData["Title"] = "Delete Workout";
+}
+
+<h1>Delete</h1>
+<h4>Workout</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="WorkoutId" class="control-label"></label>
+                <select asp-for="WorkoutId" asp-items="Model.Workouts" class="form-control">
+                    <option value="">-- Select Workout --</option>
+                </select>
+                <span asp-validation-for="WorkoutId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete Workout" class="btn btn-danger" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
