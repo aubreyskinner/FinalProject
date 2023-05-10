@@ -2,19 +2,31 @@
 @model FinalProject.Pages.Users.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Users";
 }
 
-<h1>Index</h1>
+<h3>Users:</h3>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<form>
+
+<form method = "get">
+    <input type="hidden" select asp-for="PageNum" asp-items="Model.PageNum"/>
     <select asp-for="CurrentSort" asp-items="Model.SortList">
         <option value="">sort by...</option>
     </select>
     <button type="submit">Sort</button>
+    <br>
+    <form method = "get">
+    <div>
+        Search by First Name:
+        <input type= "text" name="SearchString" value="@ViewData["CurrentFilter"]"/>
+        <button type="submit">Sort</button>
+        <br>
+        <a asp-action="Index">Back to Users</a>
+    </div>
+</form>
     <table class="table">
         <thead>
             <tr>
@@ -34,6 +46,7 @@
        
     </table>
 </form>
+
 <table class="table">
     <thead>
         <tr>

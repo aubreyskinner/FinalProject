@@ -16,8 +16,9 @@ namespace Final.Pages
         private readonly WorkoutContext _context;
         [BindProperty]
         public Workout Workout {get; set;} = default!;
-        public User UserId {get;set;}
-        public User User {get;set;} =default!;
+        
+        public User UserId {get;set;} = default!;
+        public new User User {get;set;} =default!;
         public SelectList UsersDropDown {get; set;} = default!;
 
         public AddWorkoutModel(WorkoutContext context, ILogger<AddWorkoutModel> logger)

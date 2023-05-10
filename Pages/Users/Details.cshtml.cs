@@ -18,7 +18,8 @@ namespace FinalProject.Pages.Users
             _context = context;
         }
 
-      public User User { get; set; } = default!; 
+      public new User User { get; set; } = default!; 
+      
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

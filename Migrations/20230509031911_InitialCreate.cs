@@ -17,10 +17,10 @@ namespace FinalProject.Migrations
                 {
                     UserId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    Address = table.Column<string>(type: "TEXT", nullable: true),
-                    Email = table.Column<string>(type: "TEXT", nullable: true)
+                    FirstName = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    Address = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +36,7 @@ namespace FinalProject.Migrations
                     DateCompleted = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Calories = table.Column<int>(type: "INTEGER", nullable: false),
                     WorkoutLength = table.Column<int>(type: "INTEGER", nullable: false),
-                    WorkoutType = table.Column<string>(type: "TEXT", nullable: true),
+                    WorkoutType = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

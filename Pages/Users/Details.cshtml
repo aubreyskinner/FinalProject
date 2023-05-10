@@ -5,11 +5,13 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h3>User Details:</h3>
+
+<br>
 
 <div>
-    <h4>User</h4>
-    <hr />
+    
+    
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.User.FirstName)
@@ -35,6 +37,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.User.Email)
         </dd>
+    <br>
+      <hr>
+        <br>
+        
+    
+        
         @foreach(var w in Model.User.Workouts){
             <dt class="col-sm-2">
             @Html.DisplayNameFor(model => w.DateCompleted)
@@ -60,10 +68,38 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => w.WorkoutType)
         </dd>
+        <hr/>
+        } 
+        </dl>
+        </div>
        
-        }
-    </dl>
-</div>
+
+       <div>
+       <dt>
+        <h5>Personalized Workout Overview:</h5>
+        <br>
+        Total Calories Burned:
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                int totalCalories = Model.User.Workouts.Sum(w => w.Calories);
+                @totalCalories
+            }
+        </dd>
+        <dt class="col-sm-2">
+        Total Minutes Worked:
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                int totalMinutes = Model.User.Workouts.Sum(w => w.WorkoutLength);
+                @totalMinutes
+            }
+        </dd>
+    </div>
+    <hr/>
+   
+        
+        
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.User?.UserId">Edit</a> |
     <a asp-page="./Index">Back to List</a>

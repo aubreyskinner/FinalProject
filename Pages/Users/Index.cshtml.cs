@@ -19,7 +19,7 @@ namespace FinalProject.Pages.Users
             _context = context;
         }
 
-        public IList<User> User { get;set; } = default!;
+        public new IList<User> User { get;set; } = default!;
 
         
         [BindProperty(SupportsGet = true)]
@@ -31,13 +31,19 @@ namespace FinalProject.Pages.Users
         public string CurrentSort {get; set;} = string.Empty;
         
         public SelectList SortList {get; set;} = default!;
-
+        [BindProperty(SupportsGet = true)]
+        public string SearchString {get;set;} = default!;
         public async Task OnGetAsync()
         {
             if (_context.Users != null)
             {
-                
                 var query = _context.Users.Select(u => u);
+                if (!String.IsNullOrEmpty(SearchString)){
+                    query = query.Where(u => u.FirstName.Contains(SearchString));
+                    
+                }
+            
+               var query1 = _context.Users.Select(u => u);
                 List<SelectListItem> sortItems = new List<SelectListItem> {
                     new SelectListItem { Text = "FirstName Ascending", Value = "first_asc" },
                     new SelectListItem { Text = "FirstName Descending", Value = "first_desc"}

@@ -1,11 +1,13 @@
 @page
 @model Final.Pages.AddWorkoutModel
 
+@{
+    ViewData["Title"] = "Add Workout";
+}
+
+<h3>Add a Workout:</h3>
 
 
-<h1>Create</h1>
-
-<h4>Workout</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -37,6 +39,7 @@
                 <input asp-for="Workout.WorkoutType" class="form-control" />
                 <span asp-validation-for="Workout.WorkoutType" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
                 <input type="submit" value="Add Workout" class="btn btn-primary" />
             </div>

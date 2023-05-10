@@ -24,10 +24,10 @@ namespace FinalProject.Pages.Users
         }
 
         [BindProperty]
-        public User User { get; set; } = default!;
+        public new User User { get; set; } = default!;
         
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+      
         public async Task<IActionResult> OnPostAsync()
         {
           if (!ModelState.IsValid || _context.Users == null || User == null)
